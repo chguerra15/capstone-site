@@ -1,0 +1,4 @@
+# Jupyter
+sankey_experiments.ipynb
+.ipynb_checkpoints/
+*.pyc
