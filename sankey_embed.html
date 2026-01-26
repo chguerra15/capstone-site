@@ -76,11 +76,11 @@
                 const rng = mulberry32(seed);
                 const concepts = Array.from(
                     { length: numConcepts },
-                    (_, i) => `Concept ${i + 1}`
+                    (_, i) => `Concept ${i + 1}`,
                 );
                 const classes = Array.from(
                     { length: numClasses },
-                    (_, i) => `Class ${i + 1}`
+                    (_, i) => `Class ${i + 1}`,
                 );
 
                 const sources = [];
@@ -89,7 +89,9 @@
                 const linkColors = [];
 
                 concepts.forEach((_, conceptIndex) => {
-                    const weights = Array.from({ length: numClasses }, () => rng());
+                    const weights = Array.from({ length: numClasses }, () =>
+                        rng(),
+                    );
                     const peakIndex = Math.floor(rng() * numClasses);
                     weights[peakIndex] *= 1.5 + rng() * 1.5;
                     const total = weights.reduce((acc, v) => acc + v, 0) || 1;
@@ -102,17 +104,19 @@
                         targets.push(numConcepts + classIndex);
                         values.push(Number(flow.toFixed(2)));
                         const baseColor =
-                            conceptPalette[conceptIndex % conceptPalette.length];
+                            conceptPalette[
+                                conceptIndex % conceptPalette.length
+                            ];
                         linkColors.push(hexToRgba(baseColor, 0.25));
                     });
                 });
 
                 const nodeColors = [
                     ...concepts.map(
-                        (_, i) => conceptPalette[i % conceptPalette.length]
+                        (_, i) => conceptPalette[i % conceptPalette.length],
                     ),
                     ...classes.map(
-                        (_, i) => classPalette[i % classPalette.length]
+                        (_, i) => classPalette[i % classPalette.length],
                     ),
                 ];
 
@@ -158,7 +162,7 @@
                     paper_bgcolor: "white",
                     plot_bgcolor: "white",
                 },
-                { displayModeBar: false, responsive: true }
+                { displayModeBar: false, responsive: true },
             );
         </script>
     </body>
